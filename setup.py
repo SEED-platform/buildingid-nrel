@@ -11,10 +11,6 @@
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
-from zipfile import ZipFile
-from io import BytesIO
-from requests import get
-
 
 here = path.abspath(path.dirname(__file__))
 
@@ -35,6 +31,7 @@ setup(
     name='pnnl-buildingid',
     version=get_version('buildingid/version.py'),
     description='Unique Building Identifier (UBID)',
+    dependency_linkes=['https://github.com/google/open-location-code/archive/68ba7ed4c6e7fae41a0255e4394ba1fa0f8435bb.zip#egg=olc'],
     long_description=long_description,
     url='https://github.com/pnnl/buildingid',
     author='Mark Borkum',
@@ -61,7 +58,12 @@ setup(
         'deprecation',
         'pyproj',
         'pyshp',
+        'requests',
         'shapely',
+    ],
+
+    setup_requires=[
+        'requests',
     ],
 
     python_requires='>=3',
@@ -81,6 +83,10 @@ setup(
         ],
     },
 )
+
+from zipfile import ZipFile
+from io import BytesIO
+from requests import get
 
 # Install open-location-code python module
 r = get('https://github.com/google/open-location-code/archive/68ba7ed4c6e7fae41a0255e4394ba1fa0f8435bb.zip')
