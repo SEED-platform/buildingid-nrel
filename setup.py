@@ -57,6 +57,7 @@ setup(
     install_requires=[
         'click',
         'click_log',
+        'numpy==1.26.4',
         'openlocationcode',
         'pandas',
         'pyqtree',
