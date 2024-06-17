@@ -59,7 +59,7 @@ setup(
         'click_log',
         'numpy==1.26.4',
         'openlocationcode',
-        'pandas',
+        'pandas==2.2.2',
         'pyqtree',
         'shapely',
         'tqdm',
