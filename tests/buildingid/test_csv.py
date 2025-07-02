@@ -221,7 +221,7 @@ class TestCSV(unittest.TestCase):
 
         self.assertEqual('WKB\r\nx\r\n', io_in.getvalue())
         self.assertEqual('', io_out.getvalue())
-        self.assertEqual('WKB,UBID_Error_Name,UBID_Error_Message\r\nx,WKBReadingError,Could not create geometry because of errors while reading input.\r\n', io_err.getvalue())
+        self.assertEqual('WKB,UBID_Error_Name,UBID_Error_Message\r\nx,GEOSException,ParseException: Unexpected EOF parsing WKB\r\n'', io_err.getvalue())
 
     def test_buildingid_csv_DictPipe_WKTDictDecoder(self):
         decoder_in = WKTDictDecoder('WKT')
@@ -250,7 +250,7 @@ class TestCSV(unittest.TestCase):
 
         self.assertEqual('WKT\r\nx\r\n', io_in.getvalue())
         self.assertEqual('', io_out.getvalue())
-        self.assertEqual('WKT,UBID_Error_Name,UBID_Error_Message\r\nx,WKTReadingError,Could not create geometry because of errors while reading input.\r\n', io_err.getvalue())
+        self.assertEqual('WKB,UBID_Error_Name,UBID_Error_Message\r\nx,GEOSException,ParseException: Unexpected EOF parsing WKB\r\n', io_err.getvalue())
 
 if __name__ == '__main__':
     unittest.main()

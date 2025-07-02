@@ -43,12 +43,6 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Scientific/Engineering :: GIS',
         'License :: OSI Approved :: BSD License',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
@@ -62,7 +56,6 @@ setup(
     install_requires=[
         'click',
         'click_log',
-        'numpy==1.26.4',
         'openlocationcode',
         'pandas>=2.2.2,<3',
         'pyqtree',
@@ -79,10 +72,9 @@ setup(
     extras_require={
         'dev': [
             'check-manifest',
-        ],
-        'test': [
             'coverage',
-            'nose',
+            'pytest',
+            'pytest-cov',
         ],
     },
 
