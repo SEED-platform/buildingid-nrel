@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: buildingid/command_line/dict_decoders.py
 #
@@ -17,8 +16,17 @@ import shapely.wkt
 from .dict_datum import DictDatum
 from .dict_pipe import DictDecoder
 
+
 class LatLngDictDecoder(DictDecoder[DictDatum]):
-    def __init__(self, fieldname_center_latitude: str, fieldname_center_longitude: str, fieldname_north_latitude: str = None, fieldname_south_latitude: str = None, fieldname_west_longitude: str = None, fieldname_east_longitude: str = None) -> None:
+    def __init__(
+        self,
+        fieldname_center_latitude: str,
+        fieldname_center_longitude: str,
+        fieldname_north_latitude: str = None,
+        fieldname_south_latitude: str = None,
+        fieldname_west_longitude: str = None,
+        fieldname_east_longitude: str = None,
+    ) -> None:
         super(LatLngDictDecoder, self).__init__()
 
         self.fieldname_center_latitude = fieldname_center_latitude
@@ -35,7 +43,9 @@ class LatLngDictDecoder(DictDecoder[DictDatum]):
 
         centroid = shapely.geometry.point.Point(center_longitude, center_latitude)
 
-        if (self.fieldname_center_latitude == self.fieldname_north_latitude == self.fieldname_south_latitude) and (self.fieldname_center_longitude == self.fieldname_east_longitude == self.fieldname_west_longitude):
+        if (self.fieldname_center_latitude == self.fieldname_north_latitude == self.fieldname_south_latitude) and (
+            self.fieldname_center_longitude == self.fieldname_east_longitude == self.fieldname_west_longitude
+        ):
             return DictDatum(centroid)
         else:
             north_latitude = float(row[self.fieldname_north_latitude])
@@ -51,14 +61,19 @@ class LatLngDictDecoder(DictDecoder[DictDatum]):
 
     @property
     def fieldnames(self) -> typing.List[str]:
-        return list(set([
-            self.fieldname_center_latitude,
-            self.fieldname_center_longitude,
-            self.fieldname_north_latitude,
-            self.fieldname_south_latitude,
-            self.fieldname_east_longitude,
-            self.fieldname_west_longitude,
-        ]))
+        return list(
+            set(
+                [
+                    self.fieldname_center_latitude,
+                    self.fieldname_center_longitude,
+                    self.fieldname_north_latitude,
+                    self.fieldname_south_latitude,
+                    self.fieldname_east_longitude,
+                    self.fieldname_west_longitude,
+                ]
+            )
+        )
+
 
 class WKBDictDecoder(DictDecoder[DictDatum]):
     def __init__(self, fieldname_wkbstr: str) -> None:
@@ -78,6 +93,7 @@ class WKBDictDecoder(DictDecoder[DictDatum]):
         return [
             self.fieldname_wkbstr,
         ]
+
 
 class WKTDictDecoder(DictDecoder[DictDatum]):
     def __init__(self, fieldname_wktstr: str) -> None:

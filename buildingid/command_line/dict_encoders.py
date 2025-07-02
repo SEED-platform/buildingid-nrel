@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: buildingid/command_line/dict_encoders.py
 #
@@ -11,6 +10,7 @@ import typing
 
 from .dict_datum import DictDatum
 from .dict_pipe import DictEncoder
+
 
 class BaseGeometryDictEncoder(DictEncoder[DictDatum]):
     def __init__(self, fieldname_code: str, code_length: int) -> None:
@@ -35,6 +35,7 @@ class BaseGeometryDictEncoder(DictEncoder[DictDatum]):
             self.fieldname_code,
         ]
 
+
 class ErrorDictEncoder(DictEncoder[BaseException]):
     def __init__(self, fieldname_code: str) -> None:
         super(ErrorDictEncoder, self).__init__()
@@ -44,14 +45,14 @@ class ErrorDictEncoder(DictEncoder[BaseException]):
     def encode(self, exception: BaseException) -> typing.Dict[str, typing.Any]:
         row = {}
 
-        row['{0}_Error_Name'.format(self.fieldname_code)] = type(exception).__name__
-        row['{0}_Error_Message'.format(self.fieldname_code)] = str(exception)
+        row[f"{self.fieldname_code}_Error_Name"] = type(exception).__name__
+        row[f"{self.fieldname_code}_Error_Message"] = str(exception)
 
         return row
 
     @property
     def fieldnames(self) -> typing.List[str]:
         return [
-            '{0}_Error_Name'.format(self.fieldname_code),
-            '{0}_Error_Message'.format(self.fieldname_code),
+            f"{self.fieldname_code}_Error_Name",
+            f"{self.fieldname_code}_Error_Message",
         ]

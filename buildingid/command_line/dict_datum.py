@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: buildingid/command_line/dict_datum.py
 #
@@ -14,8 +13,14 @@ import shapely.geometry.point
 
 from ..code import Code, encode
 
-class DictDatum(object):
-    def __init__(self, geom: shapely.geometry.base.BaseGeometry, bounds: typing.Tuple[float, float, float, float] = None, centroid: shapely.geometry.point.Point = None) -> None:
+
+class DictDatum:
+    def __init__(
+        self,
+        geom: shapely.geometry.base.BaseGeometry,
+        bounds: typing.Tuple[float, float, float, float] = None,
+        centroid: shapely.geometry.point.Point = None,
+    ) -> None:
         super(DictDatum, self).__init__()
 
         self.geom = geom

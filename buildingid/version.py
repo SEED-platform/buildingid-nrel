@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: buildingid/version.py
 #
@@ -7,4 +6,4 @@
 #
 # See LICENSE.txt and WARRANTY.txt for details.
 
-__version__ = '2.1.1'
+__version__ = "2.1.1"

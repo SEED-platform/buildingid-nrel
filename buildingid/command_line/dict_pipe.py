@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: buildingid/command_line/dict_pipe.py
 #
@@ -13,7 +12,8 @@ import typing
 
 from .exceptions import FieldNotFoundError, FieldNotUniqueError
 
-T = typing.TypeVar('T')
+T = typing.TypeVar("T")
+
 
 class DictDecoder(abc.ABC, typing.Generic[T]):
     def __init__(self) -> None:
@@ -28,6 +28,7 @@ class DictDecoder(abc.ABC, typing.Generic[T]):
     def fieldnames(self) -> typing.List[str]:
         raise MethodNotImplemented()  # pragma: no cover
 
+
 class DictEncoder(abc.ABC, typing.Generic[T]):
     def __init__(self) -> None:
         super(DictEncoder, self).__init__()
@@ -41,6 +42,7 @@ class DictEncoder(abc.ABC, typing.Generic[T]):
     def fieldnames(self) -> typing.List[str]:
         raise MethodNotImplemented()  # pragma: no cover
 
+
 class DictPipe:
     def __init__(self, decoder_in: DictDecoder[T], encoder_out: DictEncoder[T], encoder_err: DictEncoder[BaseException]) -> None:
         super(DictPipe, self).__init__()
@@ -49,14 +51,23 @@ class DictPipe:
         self.encoder_out = encoder_out
         self.encoder_err = encoder_err
 
-    def run(self, io_in: typing.TextIO, io_out: typing.TextIO, io_err: typing.TextIO, args_in: list = [], kwargs_in: dict = {}, args_out: list = [], kwargs_out: dict = {}) -> None:
+    def run(
+        self,
+        io_in: typing.TextIO,
+        io_out: typing.TextIO,
+        io_err: typing.TextIO,
+        args_in: list = [],
+        kwargs_in: dict = {},
+        args_out: list = [],
+        kwargs_out: dict = {},
+    ) -> None:
         csv_in = csv.DictReader(io_in, *args_in, **kwargs_in)
 
         fieldnames_in = csv_in.fieldnames
         fieldnames_in = [] if (fieldnames_in is None) else list(fieldnames_in)
 
         for fieldname in self.decoder_in.fieldnames:
-            if not fieldname in fieldnames_in:
+            if fieldname not in fieldnames_in:
                 raise FieldNotFoundError(fieldname)
 
         fieldnames_out = fieldnames_in.copy()
@@ -104,5 +115,3 @@ class DictPipe:
                     csv_out.writeheader()
 
                 csv_out.writerow(out_row)
-
-        return
