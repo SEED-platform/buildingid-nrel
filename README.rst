@@ -45,7 +45,6 @@ Test the ``pnnl-buildingid`` package using the `pytest <https://docs.pytest.org/
 
 ::
 
-  pip3 install pytest
   pytest tests/
 
 Coverage testing is enabled using the `pytest-cov <https://pytest-cov.readthedocs.io/>`_ plugin:
