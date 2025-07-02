@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: buildingid/command_line/set_csv_field_size_limit.py
 #
@@ -9,6 +8,7 @@
 
 import csv
 import sys
+
 
 # c.f., https://stackoverflow.com/questions/15063936/csv-error-field-larger-than-field-limit-131072
 def set_csv_field_size_limit(maxsize: int = sys.maxsize) -> None:
@@ -23,5 +23,3 @@ def set_csv_field_size_limit(maxsize: int = sys.maxsize) -> None:
             decrement = True
         else:
             decrement = False
-
-    return

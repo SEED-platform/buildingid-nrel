@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: tests/buildingid/test_validators.py
 #
@@ -11,8 +10,15 @@ import unittest
 
 from openlocationcode import openlocationcode
 
-from ..context import buildingid
-from buildingid.validators import isValidCodeArea, isValidCodeLength, isValidLatitude, isValidLatitudeCenter, isValidLongitude, isValidLongitudeCenter
+from buildingid.validators import (
+    isValidCodeArea,
+    isValidCodeLength,
+    isValidLatitude,
+    isValidLatitudeCenter,
+    isValidLongitude,
+    isValidLongitudeCenter,
+)
+
 
 class TestValidators(unittest.TestCase):
     def test_buildingid_validators_isValidCodeArea(self):
@@ -48,5 +54,6 @@ class TestValidators(unittest.TestCase):
         self.assertTrue(isValidLongitudeCenter(0, 2, 1))
         self.assertFalse(isValidLongitudeCenter(0, 1, 2))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

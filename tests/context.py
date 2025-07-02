@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # pnnl-buildingid: tests/context.py
 #
@@ -10,8 +9,7 @@
 import os
 import sys
 
-buildingid_abspath_ = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+buildingid_abspath_ = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, buildingid_abspath_)
-import buildingid
 sys.path.remove(buildingid_abspath_)
 del buildingid_abspath_
