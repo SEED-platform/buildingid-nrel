@@ -20,7 +20,7 @@ Clone the repository, and then install the ``pnnl-buildingid`` package:
 
   git clone https://github.com/pnnl/buildingid-py
   cd buildingid-py
-  pip3 install -e .
+  pip3 install -e .[dev]
 
 Verify the location of the ``buildingid`` command:
 
@@ -41,17 +41,19 @@ Use `pip <https://pypi.python.org/pypi/pip>`_ to remove the ``pnnl-buildingid`` 
 Test
 ====
 
-Test the ``pnnl-buildingid`` package using the `nose <https://pypi.org/project/nose/>`_ package:
+Test the ``pnnl-buildingid`` package using the `pytest <https://docs.pytest.org/>`_ package:
 
 ::
 
-  nosetests tests/
+  pip3 install pytest
+  pytest tests/
 
-Coverage testing is enabled using the `coverage <https://pypi.org/project/coverage/>`_ package:
+Coverage testing is enabled using the `pytest-cov <https://pytest-cov.readthedocs.io/>`_ plugin:
 
 ::
 
-  nosetests --with-coverage --cover-html --cover-package=buildingid tests/
+  pip3 install pytest-cov
+  pytest --cov=buildingid --cov-report=html tests/
 
 Usage
 =====
