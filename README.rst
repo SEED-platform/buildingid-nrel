@@ -2,6 +2,10 @@
 Unique Building Identifier (UBID)
 =================================
 
+.. image:: https://github.com/SEED-platform/buildingid/actions/workflows/test.yml/badge.svg
+   :target: https://github.com/SEED-platform/buildingid/actions/workflows/test.yml
+   :alt: Build Status
+
 **Website:** https://buildingid.pnnl.gov/
 
 -------------
