@@ -5,5 +5,3 @@
 # All rights reserved.
 #
 # See LICENSE.txt and WARRANTY.txt for details.
-
-
