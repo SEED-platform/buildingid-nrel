@@ -10,10 +10,11 @@ readme = "README.rst"
 authors = [
     "Mark Borkum <mark.borkum@pnnl.gov>",
     "Nicholas Long <nicholas.long@nrel.gov>",
+    "Katherine Fleming <katherine.fleming@nrel.gov>",
     ]
 license = "BSD-2-Clause"
-homepage = "https://github.com/pnnl/buildingid"
-repository = "https://github.com/pnnl/buildingid"
+homepage = "https://github.com/SEED-platform/buildingid-nrel"
+repository = "https://github.com/SEED-platform/buildingid-nrel"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
