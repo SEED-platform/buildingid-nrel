@@ -20,10 +20,10 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering :: GIS",
     "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
 ]
 
 packages = [
@@ -31,13 +31,13 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.14"
-click = "^8.2"
+python = ">=3.9,<3.13"
+click = "<8.2"
 click_log = "^0.4.0"
 openlocationcode = "^1.0"
 pandas = ">=2.2.2,<3"
 pyqtree = "^1.0"
-shapely = "^2.1"
+shapely = "<2.1"
 tqdm = "^4.67"
 
 [tool.poetry.group.dev.dependencies]
